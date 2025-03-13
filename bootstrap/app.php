@@ -16,3 +16,11 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();
+
+    $app->router->group([
+        'namespace' => 'App\Http\Controllers',
+        'prefix' => 'api',
+        'middleware' => 'api',
+    ], function ($router) {
+        require __DIR__.'/../routes/api.php';
+    });
